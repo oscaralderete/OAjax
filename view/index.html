@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OAjax - Make Ajax calls from WordPress without jQuery!</title>
+<link rel="stylesheet" href="css/styles.css$version"/>
+</head>
+<body>
+
+	<main class="main">
+		<section>
+			<div id="text">
+				$intro_text
+			</div>
+			<div class="center">
+				<button id="btn-translate" onclick="App.translate()"></button>
+			</div>
+
+			<pre>
+&lt;script src="your-path-to/OAjax.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+
+var <spam class="yellow">ajax</spam> = <spam class="blue">new</spam> OAjax(<spam>'https://your-ajax-service-url.com'</spam>);
+
+var <spam class="yellow">params</spam> = {
+	action: <spam>'post_user_data_example'</spam>,
+	data: {
+		user: {
+			name: <spam>'John'</spam>,
+			surname: <spam>'Doe'</spam>,
+			role: <spam>'subscriber'</spam>
+		},
+		hobbies: [<spam>'surfing', 'biking', 'coding', 'reading'</spam>],
+		other: {
+			age: 21,
+			genre: <spam>'Male'</spam>
+		},
+		remember_login: true,
+		observation: <spam>'Post data as JS object is cool and really modern!'</spam>
+	}
+};
+
+var <spam class="yellow">callback</spam> = (<spam class="blue">response</spam>) => {
+	if(<spam class="blue">response</spam>.result == 'OK') {
+		console.log(<spam>'Well done!'</spam>);
+		// put other useful things here...
+	}
+	else {
+		alert(<spam>`Your server says: ${<spam class="blue">response</spam>.message}`</spam>);
+	}
+};
+
+<spam class="yellow">ajax</spam>.post(<spam class="blue">params</spam>, <spam class="blue">callback</spam>);
+
+&lt;/script&gt;
+			</pre>
+
+			<div>
+				<label>Change the select to fetch tiles from server using Ajax:</label>
+				<select onchange="App.reloadTiles()" autocomplete="off">
+					<option value="6">6</option>
+					<option value="12">12</option>
+					<option value="24">24</option>
+					<option value="48">48</option>
+					<option value="96">96</option>
+				</select>
+			</div>
+		</section>
+		<ul id="tiles">
+			$LIs
+		</ul>
+		
+	</main>
+
+	<footer id="footer" class="center">
+		Developed by Oscar Alderete - https://oscaralderete.com
+	</footer>
+	<a id="scroll-trigger" href="#footer"></a>
+<script>
+// server side rendered data:
+var pageData = $pageData;
+</script>
+<script src="js/OAjax.js$version"></script>
+<script src="js/scripts.js$version"></script>
+</body>
+</html>

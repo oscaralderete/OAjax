@@ -1,0 +1,137 @@
+/*!
+@author: Oscar Alderete <me@oscaralderete.com>
+@website: https://oscaralderete.com
+@editor: NetBeans IDE v12.5
+*/
+$width_sm: 35.5em;
+$width_md: 48em;
+$width_lg: 64em;
+$width_xl: 80em;
+$width_xxl: 120em;
+
+$btn_color: #0078e7;
+
+html, body{
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	scroll-behavior: smooth;
+}
+
+h1{
+	text-align: center;
+}
+
+section{
+	padding: 1em
+}
+
+pre{
+	background-color: #000;
+	color: #fff;
+	padding: 1em;
+	
+	spam{
+		color: #bfff00;
+			
+		&.blue{
+			color: #99e5ff
+		}
+		
+		&.yellow{
+			color: #ffff4d
+		}
+	}
+}
+
+button{
+	background-color: $btn_color;
+	color: #fff;
+	font-size: 1em;
+	padding: .6em 1.2em;
+	border: solid 1px $btn_color;
+	cursor: pointer;
+	opacity: 1;
+	transition: all .4s;
+	
+	&:hover{
+		opacity: .8;
+		box-shadow: 0 0 .4em #222
+	}
+}
+
+footer{
+	font-size: 90%;
+	padding: 2em 1em;
+}
+
+.main{
+	
+	> ul{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 50% 50%;
+		column-gap: 0;
+		row-gap: 0;
+		
+		> li{
+			background-color: green;
+			height: 15em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			span{
+				font-weight: 800;
+				font-size: 3em;
+				color: #fff;
+				text-shadow: 0 0 .3em #000, 0 0 1px #000;
+			}
+		}
+	}
+}
+
+.center{
+	text-align: center
+}
+
+.highlighted{
+	background-color: #ff9;
+	text-align: center;
+	font-weight: 800;
+	padding: .5em;
+}
+
+
+@media screen and (min-width: $width_sm){
+	.main > ul{
+		grid-template-columns: 50% 50%;
+	}
+}
+
+@media screen and (min-width: $width_md){
+	.main > ul{
+		grid-template-columns: 50% 50%;
+	}
+}
+
+@media screen and (min-width: $width_lg){
+	.main > ul{
+		grid-template-columns: 33% 34% 33%;
+	}
+}
+
+@media screen and (min-width: $width_xl){
+	.main > ul{
+		grid-template-columns: 25% 25% 25% 25%;
+	}
+}
+
+@media screen and (min-width: $width_xxl){
+	.main > ul{
+		grid-template-columns: 16% 17% 17% 17% 17% 16%;
+	}
+}
