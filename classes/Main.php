@@ -49,6 +49,9 @@ class Main {
 				case 'reloadTiles':
 					$s = $this->reloadTiles($_POST['data']);
 					break;
+				case 'submitForm':
+					$s = $this->submitForm($_POST['data']);
+					break;
 				default:
 					// undefined method
 					$s['message'] = 'Undefined method.';
@@ -132,6 +135,14 @@ class Main {
 			$s['message'] = $ex->getMessage();
 		}
 
+		return $s;
+	}
+
+	private function submitForm(array $post) {
+		$s = $this->output;
+		$r = $post['user'];
+		$s['result'] = 'OK';
+		$s['message'] = '[' . date('Y-m-d H:i:s') . '] Server says: Thank you <b>' . $r['name'] . '</b> now I know that your preferred language is <b>' . $r['preferred_lang'] . '</b>!';
 		return $s;
 	}
 
