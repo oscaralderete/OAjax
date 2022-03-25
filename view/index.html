@@ -57,7 +57,34 @@ var <spam class="yellow">callback</spam> = (<spam class="blue">response</spam>) 
 			</pre>
 
 			<div>
-				<label>Change the select to fetch tiles from server using Ajax:</label>
+				<p>Example: 2</p>
+				<form id="my-form" autocomplete="off" onsubmit="App.submitForm(event)">
+					<label for="user_name">Name<span class="required">*</span>:</label>
+					<input type="text" class="my_data" id="name" placeholder="Enter your name" required>
+					<label for="user_surname">Surname<span class="required">*</span>:</label>
+					<input type="text" class="my_data" id="surname" placeholder="Enter your surname" required>
+					<label for="user-preferred_lang">Preferred language<span class="required">*</span>:</label>
+					<select id="preferred_lang" class="my_data" required>
+						<option>-- Pick your preferred language --</option>
+						<option value="PHP">PHP</option>
+						<option value="JavaScript">JavaScript</option>
+						<option value="Python">Python</option>
+						<option value="Net">Net</option>
+						<option value="C++">C++</option>
+						<option value="Go">Go</option>
+						<option value="Java">Java</option>
+						<option value="Kotlin">Kotlin</option>
+					</select>
+					<div class="center">
+						<button type="submit">Submit</button>
+					</div>
+				</form>
+				<div id="success-msg"></div>
+			</div>
+
+			<div>
+				<p>Example: 3</p>
+				<label>2. Change the select to fetch tiles from server using Ajax:</label>
 				<select onchange="App.reloadTiles()" autocomplete="off">
 					<option value="6">6</option>
 					<option value="12">12</option>
@@ -67,6 +94,7 @@ var <spam class="yellow">callback</spam> = (<spam class="blue">response</spam>) 
 				</select>
 			</div>
 		</section>
+
 		<ul id="tiles">
 			$LIs
 		</ul>
@@ -77,6 +105,7 @@ var <spam class="yellow">callback</spam> = (<spam class="blue">response</spam>) 
 		Developed by Oscar Alderete - https://oscaralderete.com
 	</footer>
 	<a id="scroll-trigger" href="#footer"></a>
+
 <script>
 // server side rendered data:
 var pageData = $pageData;
