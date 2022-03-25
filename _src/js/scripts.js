@@ -10,13 +10,18 @@ const App = {
 		en: 'Texto en español usando Ajax',
 		es: 'Switch to English using Ajax'
 	},
+	user: {
+		name: '',
+		surname: '',
+		preferred_lang: '' // default value
+	},
 	init(){
 		this.setBtnText();
+		
+		this.bindInputs();
 	},
 	setBtnText(){
-		console.log('tracer', this.btn_text[this.current_lang])
 		document.getElementById('btn-translate').innerHTML = this.btn_text[this.current_lang];
-		
 	},
 	translate(){
 		// set new lang
@@ -41,9 +46,43 @@ const App = {
 			}
 		});
 	},
+	bindInputs(){
+		// constant 'inputs' includes the select
+		const inputs = document.querySelectorAll('form > .my_data');
+		inputs.forEach(el => {
+			el.addEventListener('change', (e) => {
+				const obj = e.target;
+				this.user[obj.id] = obj.value;
+			})
+		})
+	},
+	submitForm(e){
+		e.preventDefault();
+		if(this.user.preferred_lang === ''){
+			return false;
+		}
+		this.successMsg('');
+		this.ajax.post({
+			action: 'submitForm',
+			data: {
+				user: this.user
+			}
+		}, (response) => {
+			if(response.result === 'OK'){
+				this.successMsg(`<div class="alert-success">${response.message}</div>`);
+				document.getElementById('my-form').reset();
+			}
+			else{
+				alert(response.message);
+			}
+		})
+	},
+	successMsg(str){
+		document.getElementById('success-msg').innerHTML = str;
+	},
 	reloadTiles(){
 		this.ajax.post({
-			'action': 'reloadTiles',
+			action: 'reloadTiles',
 			data: {
 				tiles: event.target.value
 			}
